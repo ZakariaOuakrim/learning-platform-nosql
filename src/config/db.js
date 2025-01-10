@@ -21,11 +21,11 @@ async function connectMongo() {
       console.log("Connection with success")
       break;
     }catch(err){
-      console.error("Error in the connection")
-      retryCount -=1;
+      console.error("Error in the connection with MongoDB ",err)
+      retryCount +=1;
       // Gérer les erreurs et les retries
       if(retryCount==7){
-        console.error("Connection not working please try later !!")
+        console.error("Connection with MongoDB not working please try later !!")
         throw err;
       }
     }
@@ -35,6 +35,25 @@ async function connectMongo() {
 async function connectRedis() {
   // TODO: Implémenter la connexion Redis
   // Gérer les erreurs et les retries
+  const maxRetries=8;
+  let retryCount=0
+  while(retryCount<maxRetries){
+    try{
+      redisClient=redis.createClient({url:config.redis.uri})
+      redisClient.on('error', (err) => {
+        throw err;
+      });
+      await redisClient.connect();
+      break;
+    }catch(err){
+      console.error('Error in Connection with Redis ',err)
+      retryCount+=1
+      if(retryCount==7){
+        console.error('Connection with Redis not working please try later !!');
+        throw err;
+      }
+    }
+  }
 }
 
 // Export des fonctions et clients
