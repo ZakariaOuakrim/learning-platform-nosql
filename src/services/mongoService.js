@@ -18,7 +18,7 @@ async function insertOne(collectionName,document){
   const collection= db.collection(collectionName)
   return await collection.insertOne(document)
 }
-async function getCoursesStats(req,res){
+async function getCoursesStats(){
   const db=mongodb.getMongoDb();
   return await db.collection('course').countDocuments();
 }

@@ -40,7 +40,12 @@ async function getCourse(req,res){
   }
 }
 async function getCourseStats(req,res){
-  
+  try{
+    let stats=await mongoService.getCoursesStats();
+    res.stats(200).json(stats)
+  }catch(err){
+    console.error(err)
+  }
 }
 
 // Export des contrôleurs
