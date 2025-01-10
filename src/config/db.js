@@ -55,8 +55,22 @@ async function connectRedis() {
     }
   }
 }
-
+async function closeConnections(){
+  if(mongoClient) await mongoClient.close()
+  if(redisClient) await redisClient.close()
+}
+function getMongoDb(){
+  if(!db){
+    throw new Error("No connectin found to be")
+  }else{
+    return db;
+  }
+}
 // Export des fonctions et clients
 module.exports = {
   // TODO: Exporter les clients et fonctions utiles
+  connectMongo,
+  connectRedis,
+  closeConnections,
+  getMongoDb
 };
