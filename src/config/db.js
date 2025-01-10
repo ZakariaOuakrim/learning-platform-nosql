@@ -1,7 +1,7 @@
 // Question : Pourquoi créer un module séparé pour les connexions aux bases de données ?
-// Réponse : 
+// Réponse :  Séparation des préoccupations et réutilisation : Code de connexion regroupé en un seul endroit, facilitant la maintenance et la réutilisation.
 // Question : Comment gérer proprement la fermeture des connexions ?
-// Réponse : 
+// Réponse : Pour gérer proprement la fermeture des connexions, il faut utiliser un mécanisme de gestion automatique comme un try-with-resources (en Java) ou un finally block, garantissant la fermeture des connexions même en cas d'erreur.
 
 const { MongoClient } = require('mongodb');
 const redis = require('redis');
@@ -11,7 +11,25 @@ let mongoClient, redisClient, db;
 
 async function connectMongo() {
   // TODO: Implémenter la connexion MongoDB
-  // Gérer les erreurs et les retries
+  const maxRetries=8;
+  let retryCount=0
+  while(retryCount<maxRetries){
+    try{
+      mongoClient = new MongoClient(config.mongodb.uri);
+      await mongoClient.connect()
+      db=mongoClient.db(config.mongodb.dbName)
+      console.log("Connection with success")
+      break;
+    }catch(err){
+      console.error("Error in the connection")
+      retryCount -=1;
+      // Gérer les erreurs et les retries
+      if(retryCount==7){
+        console.error("Connection not working please try later !!")
+        throw err;
+      }
+    }
+  }
 }
 
 async function connectRedis() {
