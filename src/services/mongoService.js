@@ -18,10 +18,15 @@ async function insertOne(collectionName,document){
   const collection= db.collection(collectionName)
   return await collection.insertOne(document)
 }
+async function getCoursesStats(req,res){
+  const db=mongodb.getMongoDb();
+  return await db.collection('course').countDocuments();
+}
 
 // Export des services
 module.exports = {
   // TODO: Exporter les fonctions utilitaires
   insertOne,
-  findOneById
+  findOneById,
+  getCoursesStats
 };

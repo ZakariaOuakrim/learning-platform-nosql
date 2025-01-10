@@ -39,9 +39,13 @@ async function getCourse(req,res){
     res.status(500).json({error:'Faild to load course'});
   }
 }
+async function getCourseStats(req,res){
+  
+}
 
 // Export des contrôleurs
 module.exports = {
   // TODO: Exporter les fonctions du contrôleur
   createCourse,
+  getCourse,
 };
