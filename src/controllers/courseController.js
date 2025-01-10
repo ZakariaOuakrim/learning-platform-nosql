@@ -27,4 +27,5 @@ async function createCourse(req, res) {
 // Export des contrôleurs
 module.exports = {
   // TODO: Exporter les fonctions du contrôleur
+  createCourse,
 };
