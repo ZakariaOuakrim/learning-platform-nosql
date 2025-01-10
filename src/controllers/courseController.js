@@ -14,6 +14,14 @@ const redisService = require('../services/redisService');
 async function createCourse(req, res) {
   // TODO: Implémenter la création d'un cours
   // Utiliser les services pour la logique réutilisable
+  try{
+    const course=req.body;
+    const result=await mongoService.insertOne('course',course)
+    res.status(201).json(result)
+  }catch(err){
+    res.status(500).json({ error: 'Failed to create course' });
+    console.error("Failed to create course")
+  }
 }
 
 // Export des contrôleurs
