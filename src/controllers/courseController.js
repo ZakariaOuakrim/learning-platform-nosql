@@ -24,6 +24,22 @@ async function createCourse(req, res) {
   }
 }
 
+async function getCourse(req,res){
+  const { id } = req.params;
+  try{
+    let course = await redisService.getCachedData(id);
+    if(!course){
+      course = await mongoService.findOneById('course',id)
+      if(course){
+        await redisService.cacheData(id,course,3600)
+      }
+    }
+    res.status(200).json(course)
+  }catch(err){
+    res.status(500).json({error:'Faild to load course'});
+  }
+}
+
 // Export des contrôleurs
 module.exports = {
   // TODO: Exporter les fonctions du contrôleur
