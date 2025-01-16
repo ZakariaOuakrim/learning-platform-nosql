@@ -1,60 +1,54 @@
-# Projet de fin de module NoSQL
 
-Pour ce projet, vous allez créer une petite API qui va servir de backend à une plateforme d'apprentissage en ligne. J'ai préparé la structure du projet avec une organisation professionnelle du code, comme vous pouvez le constater dans ce dépôt Github.
+# Learning Platform 
 
-Commençons par l'organisation pratique :
+A backend API for CRUD operations of managing a Learning Platform
 
-1. Création de votre dépôt :
-   - Sur Github.com
-   - Créez un nouveau dépôt public
-   - Nommez-le "learning-platform-nosql"
-   - Ne l'initialisez pas avec un README pour le moment
+## Project Structure
+-  `config/`: Management of database connections (MongoDB, Redis) and environment variables.
+- `controllers/`: used for business logic for entities.
+- `routes/`: API entry points for each resource.
+- `services/`: Services for handling business operations and interactions between different components.
+- `app.js`: Main entry point.
 
-2. Configuration de votre environnement local :
+
+
+
+
+## Installing and launching the Project en
+Here are the steps to install and launch the Project :
+
+1. **Clone the repository** :
    ```bash
-   # Clonez mon dépôt template (ce dépôt)
-   git clone https://github.com/pr-daaif/learning-platform-template
-   
-   # Renommez le dépôt origin
-   cd learning-platform-template
-   git remote remove origin
-   
-   # Ajoutez votre dépôt comme nouvelle origine
-   git remote add origin https://github.com/[votre-compte]/learning-platform-nosql
-   
-   # Poussez le code vers votre dépôt
-   git push -u origin main
-   ```
+   git clone https://github.com/ZakariaOuakrim/learning-platform-nosql
 
-3. Installation des dépendances :
-   ```bash
-   npm install
-   ```
+2. **Launch the Project** :
+    ```bash 
+    npm start
+## Answers of technical questions in French
+**Comment organiser le point d'entrée de l'application ?**
+-   Organisez le point d'entrée de l'application en regroupant les différentes parties du code, en les initialisant et en les démarrant de manière ordonnée et cohérente
+**Quelle est la meilleure façon de gérer le démarrage de l'application ?**
+-   La meilleure façon de gérer le démarrage de l'application est de séparer les différentes étapes de l'initialisation, de gérer les erreurs de manière appropriée et de démarrer le serveur de manière asynchrone.
+**Quelles sont les bonnes pratiques pour les clés Redis ?**
+-   Utiliser des noms de clés explicites , Adopter une convention de nommage cohérente, limiter la longueur des clés, Utiliser des TTL (Time-to-Live) appropriés.
+**Pourquoi créer des services séparés ?**
+-   créer des services séparés permet de construire des applications plus modulaires, réutilisables, scalables, maintenables, et sécurisées, tout en facilitant le développement parallèle et l'isolation des pannes.
+**Pourquoi séparer les routes dans différents fichiers ?**
+-   En séparant les routes dans différents fichiers, vous pouvez améliorer l'organisation, la maintenabilité, la collaboration, la réutilisabilité, la scalabilité et l'isolation des composants de votre application. Cela rend le développement plus efficace et le code plus propre et plus facile à gérer.
+**Comment organiser les routes de manière cohérente ?**
+-   Séparer les Routes par Fonctionnalité ,Utiliser une Convention de Nommage Consistante, structurer les Routes de Manière Hiérarchique 
+**Quelle est la différence entre un contrôleur et une route ?**
+-   Un contrôleur est responsable de la logique métier de l'application, tandis qu'une route est responsable de l'acheminement des requêtes HTTP vers les contrôleurs appropriés.
+**Pourquoi séparer la logique métier des routes ?**
+-   Séparer la logique métier des routes permet de rendre le code plus modulaire, plus facile à maintenir et à tester, et de faciliter la réutilisation de la logique métier dans différentes parties de l'application.
+## Demo
 
-Je vous propose une structure de code qui suit les bonnes pratiques de développement. Vous trouverez dans le code des commentaires avec des **questions qui vous guideront dans votre réflexion**. Ces questions sont importantes car elles vous aideront à comprendre les choix d'architecture.
+![Launching app](./images/launching.png)
+![Docker Services](./images/dockerServices.png)
+![Insertion Test](./images/InsertionTest.png)
 
-### Aspects professionnels à noter :
-- Utilisation des variables d'environnement pour la configuration
-- Séparation claire des responsabilités (routes, contrôleurs, services)
-- Gestion propre des connexions aux bases de données
-- Organisation modulaire du code
-- Gestion des erreurs et des cas limites
-- Documentation du code
 
-### Pour le rendu, voici ce que j'attends :
-1. Un dépôt public sur Github avec un historique de commits clair
-2. Un README.md qui explique :
-   - Comment installer et lancer le projet
-   - La structure du projet
-   - Les choix techniques que vous avez faits
-   - Les réponses aux questions posées dans les commentaires
-3. Le code complété avec tous les TODOs implémentés
+## Authors
 
-### Je vous conseille de procéder étape par étape :
-1. Commencez par lire et comprendre la structure du projet
-2. Répondez aux questions des commentaires dans le README
-3. Implémentez progressivement les TODOs
-4. Testez chaque fonctionnalité au fur et à mesure
-5. Documentez vos choix et vos réflexions en ajoutant des copies d'écrans à votre fichier README.md
+- [@ZakariaOuakrim](https://www.github.com/ZakariaOuakrim)
 
-#### Bon courage

@@ -7,10 +7,8 @@
 const express = require('express');
 const db = require('./config/db');
 const config = require('./config/env');
-const db = require('./config/db');
 
 const courseRoutes = require('./routes/courseRoutes');
-const studentRoutes = require('./routes/studentRoutes');
 
 const app = express();
 
@@ -24,7 +22,7 @@ async function startServer() {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
     // TODO: Monter les routes
-    app.use('/api', courseRoutes);
+    app.use('/api/courses', courseRoutes);
     // TODO: Démarrer le serveur
     app.listen(config.port, () => {
       console.log(`Server started on port ${config.port}`);
