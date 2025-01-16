@@ -53,4 +53,5 @@ module.exports = {
   // TODO: Exporter les fonctions du contrôleur
   createCourse,
   getCourse,
+  getCourseStats
 };
